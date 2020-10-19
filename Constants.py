@@ -1,1 +1,0 @@
-wordListFilePath = 'wordlist-English.csv'
