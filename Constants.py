@@ -1,0 +1,1 @@
+wordListFilePath = 'wordlist-English.csv'
