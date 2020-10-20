@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>  
+  </head>
+  <body>
+    <a-scene>
+      <a-entity environment="preset:contact"></a-entity>
+      <a-assets>
+        <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
+      </a-assets>
+        <a-box color="#DBC5EF" position="0 1 -7" rotation="0 0 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+        <a-box color="#DBC5EF" position="-2 1 -7" rotation="0 -5 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+        <a-box color="#DBC5EF" position="2 1 -7" rotation="0 5 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+        <a-box color="#DBC5EF" position="-4 1 -7" rotation="0 -10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+        <a-box color="#DBC5EF" position="4 1 -7" rotation="0 10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+      <!-- <a-box color="#DBC5EF" position="-6 2 -7" rotation="0 10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box> -->
+
+      <a-torus-knot color="black" arc="180" p="2" q="3" radius="3" radius-tubular="0.65" position="-1.5 8 -30" material="fog: false" light="color:#560645" id="tor"></a-torus-knot>
+      <a-light color="#560645" position="-1 6 -20"  type="spot" intensity="6.0"></a-light> 
+      <a-light color="#560645" position="-1 5 -10"  type="spot" intensity="6.0"></a-light> 
+      <a-light color="#560645" position="-1 4 -15"  type="spot" intensity="6.0"></a-light> 
+      <!-- <a-light color="#E332CC" position="-1.5 8 -25" type="point" ></a-light>  -->
+
+      <!-- <a-entity text-geometry="value: GAME_NAME; font: #optimerBoldFont; size:2" position="-8 3 -20" ></a-entity> -->
+    </a-scene>
+  </body>
+</html>
