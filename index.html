@@ -7,108 +7,79 @@
     <script src="ParseJson.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-entity environment="preset:contact"></a-entity>
-      <a-asset-item id="letter-a-obj" src="alphabets/a.obj"></a-asset-item>
-          <a-asset-item id="letter-a-mtl" src="alphabets/a.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-b-obj" src="alphabets/b.obj"></a-asset-item>
-          <a-asset-item id="letter-b-mtl" src="alphabets/b.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-c-obj" src="alphabets/c.obj"></a-asset-item>
-          <a-asset-item id="letter-c-mtl" src="alphabets/c.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-d-obj" src="alphabets/d.obj"></a-asset-item>
-          <a-asset-item id="letter-d-mtl" src="alphabets/d.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-e-obj" src="alphabets/e.obj"></a-asset-item>
-          <a-asset-item id="letter-e-mtl" src="alphabets/e.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-f-obj" src="alphabets/f.obj"></a-asset-item>
-          <a-asset-item id="letter-f-mtl" src="alphabets/f.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-g-obj" src="alphabets/g.obj"></a-asset-item>
-          <a-asset-item id="letter-g-mtl" src="alphabets/g.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-h-obj" src="alphabets/h.obj"></a-asset-item>
-          <a-asset-item id="letter-h-mtl" src="alphabets/h.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-i-obj" src="alphabets/i.obj"></a-asset-item>
-          <a-asset-item id="letter-i-mtl" src="alphabets/i.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-j-obj" src="alphabets/j.obj"></a-asset-item>
-          <a-asset-item id="letter-j-mtl" src="alphabets/j.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-k-obj" src="alphabets/k.obj"></a-asset-item>
-          <a-asset-item id="letter-k-mtl" src="alphabets/k.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-l-obj" src="alphabets/l.obj"></a-asset-item>
-          <a-asset-item id="letter-l-mtl" src="alphabets/l.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-m-obj" src="alphabets/m.obj"></a-asset-item>
-          <a-asset-item id="letter-m-mtl" src="alphabets/m.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-n-obj" src="alphabets/n.obj"></a-asset-item>
-          <a-asset-item id="letter-n-mtl" src="alphabets/n.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-o-obj" src="alphabets/o.obj"></a-asset-item>
-          <a-asset-item id="letter-o-mtl" src="alphabets/o.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-p-obj" src="alphabets/p.obj"></a-asset-item>
-          <a-asset-item id="letter-p-mtl" src="alphabets/p.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-q-obj" src="alphabets/q.obj"></a-asset-item>
-          <a-asset-item id="letter-q-mtl" src="alphabets/q.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-r-obj" src="alphabets/r.obj"></a-asset-item>
-          <a-asset-item id="letter-r-mtl" src="alphabets/r.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-s-obj" src="alphabets/s.obj"></a-asset-item>
-          <a-asset-item id="letter-s-mtl" src="alphabets/s.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-t-obj" src="alphabets/t.obj"></a-asset-item>
-          <a-asset-item id="letter-t-mtl" src="alphabets/t.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-u-obj" src="alphabets/u.obj"></a-asset-item>
-          <a-asset-item id="letter-u-mtl" src="alphabets/u.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-v-obj" src="alphabets/v.obj"></a-asset-item>
-          <a-asset-item id="letter-v-mtl" src="alphabets/v.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-w-obj" src="alphabets/w.obj"></a-asset-item>
-          <a-asset-item id="letter-w-mtl" src="alphabets/w.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-x-obj" src="alphabets/x.obj"></a-asset-item>
-          <a-asset-item id="letter-x-mtl" src="alphabets/x.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-y-obj" src="alphabets/y.obj"></a-asset-item>
-          <a-asset-item id="letter-y-mtl" src="alphabets/y.mtl"></a-asset-item>
-  
-          <a-asset-item id="letter-z-obj" src="alphabets/z.obj"></a-asset-item>
-          <a-asset-item id="letter-z-mtl" src="alphabets/z.mtl"></a-asset-item>
+    <a-scene stats>
+          <a-asset-item id="delorean" src="/models/car/scene.gltf"></a-asset-item>
+
+          <img id="sky" src="/images/sky.jpg" crossorigin="anonymous">
+
+          <a-asset-item id = "base" src = "models/Environment.glb"></a-asset-item>
+		    	<a-asset-item id = "pedestal" src = "models/Pedestal.glb"></a-asset-item>
+
+          <audio id="tune" src="/music/HOME-Resonance.mp3" preload="auto"></audio>
+
+          <a-asset-item id="road-4-obj" src="/models/road/4.obj"></a-asset-item>
+          <a-asset-item id="road-4-mtl" src="/models/road/4.mtl"></a-asset-item>
+
           <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
       </a-assets>
-        <a-box color="#DBC5EF" position="0 1 -7" rotation="0 0 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
+
+      <a-sky src="#sky" rotation="0 -90 0" position="" scale="" visible="" material="" geometry=""></a-sky>
+        <!-- <a-box color="#DBC5EF" position="0 1 -7" rotation="0 0 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
         <a-box color="#DBC5EF" position="-2 1 -7" rotation="0 -5 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
         <a-box color="#DBC5EF" position="2 1 -7" rotation="0 5 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
         <a-box color="#DBC5EF" position="-4 1 -7" rotation="0 -10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
-        <a-box color="#DBC5EF" position="4 1 -7" rotation="0 10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box>
-        <a-entity id="letter-a" visible="false" obj-model="obj: #letter-a-obj; mtl: #letter-a-mtl"></a-entity>
-        <a-entity id="letter-b" visible="false" obj-model="obj: #letter-b-obj; mtl: #letter-b-mtl"></a-entity>
+        <a-box color="#DBC5EF" position="4 1 -7" rotation="0 10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box> -->
+
       <!-- <a-box color="#DBC5EF" position="-6 2 -7" rotation="0 10 45" scale="1 1 0.05" shader="skyshader" turbidity="3.000"></a-box> -->
 
-      <a-torus-knot color="black" arc="180" p="2" q="3" radius="3" radius-tubular="0.65" position="-1.5 8 -30" material="fog: false" light="color:#560645" id="tor"></a-torus-knot>
-      <a-light color="#560645" position="-1 6 -20"  type="spot" intensity="6.0"></a-light> 
-      <a-light color="#560645" position="-1 5 -10"  type="spot" intensity="6.0"></a-light> 
-      <a-light color="#560645" position="-1 4 -15"  type="spot" intensity="6.0"></a-light> 
-      <a-entity id="letter1"></a-entity>
-      <a-entity id="letter2"></a-entity>
-      <a-entity id="letter3"></a-entity>
-      <a-entity id="letter4"></a-entity>
-      <a-entity id="letter5"></a-entity>
-      <a-entity id="letter6"></a-entity>
-      <a-entity id="letter7"></a-entity>
-    
+      <a-entity gltf-model="#delorean" 
+        position="-3.5 -0.15 30" 
+        scale="0.3 0.2 0.3" 
+        rotation="0 -90 0" 
+        sound="src: #tune ;autoplay : false"
+        animation="property: position; delay: 2000; to: -3.5 -0.15 -6.5; dur: 4500; easing: linear;">
+        <a-entity id="rig" rotation="0 90 0" position="11 3.5 -12.5 ">
+          <a-camera look-controls wasd-controls="acceleration: 1000;">
+          </a-camera>
+        </a-entity>
+        <a-entity rotation="0 90 0" light="type: spot; color:#E4D9F0; intensity: 1; distance: 30; decay: 1"
+          position="-3 2 -12.5">
+        </a-entity>
+      </a-entity>
+
+    <a-entity gltf-model = "#pedestal" position = "0 -1.25 -8.5">
+    </a-entity>
+
+      <!-- test car -->
+      <!-- <a-entity gltf-model="#delorean" 
+        position="-3.5 -0.15 25" 
+        scale="0.3 0.2 0.3" 
+        rotation="0 -90 0" 
+        sound="src: #tune ;autoplay : true">
+        <a-entity id="rig" rotation="0 90 0" position="11 3.5 -12.5 ">
+          <a-camera>
+          </a-camera>
+        </a-entity>
+        <a-entity rotation="0 90 0" light="type: spot; intensity: 0.75; distance: 50; decay: 2"
+          position="-3 2 -12.5">
+        </a-entity>
+      </a-entity> -->
+     
+      <!-- test camera -->
+      <!-- <a-entity id="rig" position="0 25 28"  rotation = " -90 0 0">
+        <a-camera>
+        </a-camera>
+      </a-entity> -->
+
+      <a-entity light="type: ambient; color: #FFFFFF"></a-entity>
+
+
+      <!-- Road Network -->
+      <a-entity id="road-4" scale = " 0.015 0.015 0.015" rotation = "0 90 0" position =" 0 0 0"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
+      <a-entity id="road-4" scale = " 0.015 0.015 0.015" rotation = "0 90 0" position =" 0 0 9.5"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
+      <a-entity id="road-4" scale = " 0.015 0.015 0.015"  rotation = "0 90 0" position =" 0 0 19"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
+      <a-entity id="road-4" scale = " 0.015 0.015 0.015"  rotation = "0 90 0" position =" 0 0 28.5"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
+
     </a-scene>
   </body>
 </html>
