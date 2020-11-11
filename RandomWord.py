@@ -63,7 +63,7 @@ app=Flask(__name__)
 @app.route('/')
 def func():
     #data = pd.read_excel (r'/home/mahak/Documents/ssdproject/level1.ods') 
-    excel_file='/home/mahak/Documents/floder1/level1.csv'
+    excel_file='level1.csv'
     df = pd.read_csv(excel_file)
     index_list = df["Level1"].tolist()
     random_num = random.choice(index_list)
@@ -94,9 +94,8 @@ def func():
 
 
 @app.route('/level2')
-def func2():
-    #data = pd.read_excel (r'/home/mahak/Documents/ssdproject/level1.ods') 
-    excel_file='/home/mahak/Documents/floder1/level2.csv'
+def func2(): 
+    excel_file='level2.csv'
     df = pd.read_csv(excel_file)
     index_list = df["Level2"].tolist()
     random_num = random.choice(index_list)
@@ -128,7 +127,7 @@ def func2():
 @app.route('/level3')
 def func3():
     #data = pd.read_excel (r'/home/mahak/Documents/ssdproject/level1.ods') 
-    excel_file='/home/mahak/Documents/floder1/level3.csv'
+    excel_file='level3.csv'
     df = pd.read_csv(excel_file)
     index_list = df["Level3"].tolist()
     random_num = random.choice(index_list)
