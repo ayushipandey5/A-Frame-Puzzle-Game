@@ -4,7 +4,21 @@
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+	
+    <script src="https://unpkg.com/aframe-simple-link-component/dist/aframe-simple-link-component.min.js"></script>
+    
+    <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
     <script src="ParseJson.js"></script>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
   </head>
   <body>
     <a-scene stats>
@@ -17,8 +31,8 @@
 
           <audio id="tune" src="/music/HOME-Resonance.mp3" preload="auto"></audio>
 
-          <a-asset-item id="road-4-obj" src="/models/road/4.obj"></a-asset-item>
-          <a-asset-item id="road-4-mtl" src="/models/road/4.mtl"></a-asset-item>
+          <a-asset-item id="road-4-obj" src="/models/Road/4.obj"></a-asset-item>
+          <a-asset-item id="road-4-mtl" src="/models/Road/4.mtl"></a-asset-item>
 
           <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
       </a-assets>
@@ -79,6 +93,58 @@
       <a-entity id="road-4" scale = " 0.015 0.015 0.015" rotation = "0 90 0" position =" 0 0 9.5"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
       <a-entity id="road-4" scale = " 0.015 0.015 0.015"  rotation = "0 90 0" position =" 0 0 19"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
       <a-entity id="road-4" scale = " 0.015 0.015 0.015"  rotation = "0 90 0" position =" 0 0 28.5"  obj-model="obj: #road-4-obj; mtl: #road-4-mtl"></a-entity>
+
+
+      <!-- Displaying Letters -->
+      <a-entity position="-12.5 1 -1" scale="1.5 1.5 1" text-geometry="bevelEnabled:true;bevelSize:0.1;bevelThickness:0.1;curveSegments:1;font:Fonts/exo2Black.typeface.json;height:0.5;size:1.5;value:JUMBLE BUMBLE" material="color:pink;metalness:0.9;roughness:0.05;sphericalEnvMap:https://img.gs/bbdkhfbzkk/2048x1024,stretch/http://i.imgur.com/WMNH2OF.jpg;"></a-entity>
+
+
+      <a-entity position="-3.5 2 -16" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:A" material="shader:flat;color:white"></a-entity>
+      <a-entity position="-2 2 -16" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
+      <a-entity position="-0.5 2 -16" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:S" material="shader:flat;color:white"></a-entity>
+      <a-entity position="1 2 -16" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:E" material="shader:flat;color:white"></a-entity>
+      <a-entity position="2.5 2 -16" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
+      <!-- <a-entity position="0 2 -16" scale="0.6 1.2 1" text-geometry="value:HEYA; font:Fonts/exo2Black.typeface.json;"></a-entity> -->
+      
+
+      <!-- HALO / SCORE -->
+			<a-entity
+				geometry="primitive: circle;
+						  radius: 1.6;"
+				 material="shader:gif;
+						   src:url(gifs/portal.gif);
+						   side: double;
+						   blending: additive;
+						   opacity: 0.9"
+				position = "10 1.5 -11"
+				rotation = "010 -65 0"
+				
+			    look-at = "#cam"
+					  
+				navigate-on-click="url: ./home.html">
+				
+				<a-entity 
+				  text = "value: \nSCORE;
+						  
+						  color: #ffffff;
+						  shader: msdf;
+						  opacity: 0.9;
+						  align: center;
+						  wrapCount: 40;
+						  font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-Regular.json"
+				  material = "shader: flat;
+							  opacity: 0"
+				  look-at = "#cam"
+				  position = "0 0 0"
+				  rotation = "0 0 0"
+				  scale = "5 5 5">
+				</a-entity>
+				
+			</a-entity>
+
+      <!-- LEVEL       -->
+      <a-entity position="-10 1.2 -10" rotation = "10 65 0" text-geometry="bevelEnabled:true;bevelSize:0.04;bevelThickness:0.04;curveSegments:1;font:Fonts/exo2BlackItalic.typeface.json;height:0;size:1;style:italic;weight:bold;value:LEVEL" material="opacity:0.4;shader:flat;transparent:true;color:white"></a-entity>
+
 
     </a-scene>
   </body>
