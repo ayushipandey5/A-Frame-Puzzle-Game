@@ -60,7 +60,7 @@ def AnagramFinder(word):
   
             
 app=Flask(__name__)
-@app.route('/')
+@app.route('/level1')
 def func():
     #data = pd.read_excel (r'/home/mahak/Documents/ssdproject/level1.ods') 
     excel_file='level1.csv'
