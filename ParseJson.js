@@ -10,13 +10,11 @@ function ShowLetter(letter,position)
     posx = startPos[0] + (position - 1) * increment;
     posy = startPos[1];
     posz = startPos[2];
-    //console.log(letterId);
-    var el = letter;// document.querySelector(letterId);
-    //let scale = el.getAttribute("scale").clone() // clone the scale vector
-    //scale.multiplyScalar(scaleFactor);
-    //el.setAttribute("scale", scale);
-    el.setAttribute("position", { x: posx, y: posy, z: posz });
-    el.setAttribute("visible",true);
+    base = document.createElement('a-entity');
+    base.setAttribute("position", { x: posx, y: posy, z: posz });
+    base.setAttribute("text-geometry", textGeometryString + letter);
+    base.setAttribute("visible", true);
+    return base;
 }
 // AFRAME.registerComponent('letters',{
 //     init:function(){
@@ -33,11 +31,13 @@ function CreateLetter(letter, position)
 {
     console.log(letter);
     console.log(position);
-    letterId = letterIdentifier + letter;
-    var el = document.querySelector("#letter" + position);
+    //letterId = letterIdentifier + letter;
+    var el = document.querySelector("#display-letters");
     console.log(el);
-    el.setAttribute('obj-model', { obj: objPath + letter + ".obj" })
-    ShowLetter(el, position)
+    //el.setAttribute('obj-model', { obj: objPath + letter + ".obj" })
+    letterElement = ShowLetter(letter, position);
+    console.log(letterElement);
+    el.appendChild(letterElement);
 }
 
 function GetJsonFromApi(level)
@@ -45,7 +45,7 @@ function GetJsonFromApi(level)
     a = '{\
         "CurrentLevel": "2",\
         "PointsToNextLevel": "40",\
-        "JumbledLetters": ["A", "P", "Q", "G", "R"],\
+        "JumbledLetters": ["A", "P", "Q", "G", "R", "S", "T", "Y"],\
         "TotalAnswers": "52",\
         "Words": [{\
             "word": "Alphabet",\
