@@ -88,7 +88,7 @@ def func():
     resp = jsonify(message)
     resp.status_code = 200
     print(resp)
-    return resp
+    return after_request(resp)
 
 
 
@@ -120,7 +120,7 @@ def func2():
     resp = jsonify(message)
     resp.status_code = 200
     print(resp)
-    return resp
+    return after_request(resp)
 
     
 
@@ -152,9 +152,12 @@ def func3():
     resp = jsonify(message)
     resp.status_code = 200
     print(resp)
-    return resp
+    return after_request(resp)
 
-
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 if __name__ == "__main__":
     app.run(port=5000,debug=True)

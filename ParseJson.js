@@ -1,7 +1,11 @@
 startPos = [-3.5, 2, -16];
 increment = 1.5;
 letterscaleFactor = 1;
-textGeometryString = "font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:"
+textGeometryString = "font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:";
+apiUrl = "http://localhost:5000/level";
+levelTextAttrib = "bevelEnabled:true;bevelSize:0.04;bevelThickness:0.04;curveSegments:1;font:Fonts/exo2BlackItalic.typeface.json;height:0;size:1;style:italic;weight:bold;value:";
+levelText = "LEVEL  ";
+currentLevel = 1;
 scaleFactor = 0.1;
 function ShowLetter(letter,position)
 {
@@ -13,6 +17,7 @@ function ShowLetter(letter,position)
     base = document.createElement('a-entity');
     base.setAttribute("position", { x: posx, y: posy, z: posz });
     base.setAttribute("text-geometry", textGeometryString + letter);
+    base.setAttribute("material", "shader:flat;color:white")
     base.setAttribute("visible", true);
     return base;
 }
@@ -42,23 +47,30 @@ function CreateLetter(letter, position)
 
 function GetJsonFromApi(level)
 {
-    a = '{\
-        "CurrentLevel": "2",\
-        "PointsToNextLevel": "40",\
-        "JumbledLetters": ["A", "P", "Q", "G", "R", "S", "T", "Y"],\
-        "TotalAnswers": "52",\
-        "Words": [{\
-            "word": "Alphabet",\
-            "Score": "50"\
-        }, {\
-            "Word": "Aeroplane",\
-            "Score": "46"\
-        }, {\
-            "Word": "Bet",\
-            "Score": "30"\
-        }]\
-    }'
-    return a;
+    response = "";
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            cache : false,
+            url: apiUrl + level,
+            timeout: 5000,
+             success: function(data, textStatus ){
+                //console.log(data);
+                response = data;
+             },
+            fail: function(xhr, textStatus, errorThrown){
+                console.log('request failed');
+            }
+        });
+    // return a;
+    return response;
+}
+function UpdateLevelText(level)
+{
+    var el = document.querySelector("#level-text");
+    el.setAttribute('text-geometry', levelTextAttrib + levelText + level);
+    
 }
 $(document).ready(function ()
 {
@@ -68,12 +80,23 @@ $(document).ready(function ()
     //CreateLetter("c", 3);
     //ShowLetter("a", 1);
     //ShowLetter("b", 2);
-    jsonString = GetJsonFromApi();
-    var objects = jQuery.parseJSON(jsonString);
-    for(var i = 0; i < objects["JumbledLetters"].length; i++)
+    var objects = GetJsonFromApi(currentLevel);
+    UpdateLevelText(currentLevel);
+    //console.log(jsonString);
+    //var objects = jQuery.parseJSON(jsonString);
+    var numberOfLetters = objects["JumbleLetters"].length;
+    if (numberOfLetters % 2 == 0) {
+        startPos[0] = - ((numberOfLetters * increment) / 2);
+        console.log(startPos);
+    }
+    else {
+        startPos[0] = - increment * (numberOfLetters / 2);
+        console.log(startPos);
+    }
+    for(var i = 0; i < objects["JumbleLetters"].length; i++)
     {
-        console.log(objects["JumbledLetters"][i]);
-        CreateLetter(objects["JumbledLetters"][i], i + 1);
+        console.log(objects["JumbleLetters"][i]);
+        CreateLetter(objects["JumbleLetters"][i].toUpperCase(), i + 1);
     }
 });
 
