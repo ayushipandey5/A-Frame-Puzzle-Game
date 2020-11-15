@@ -59,9 +59,10 @@ function GetJsonFromApi(level)
                 //console.log(data);
                 response = data;
              },
-            fail: function(xhr, textStatus, errorThrown){
+            fail: function (xhr, textStatus, errorThrown)
+            {
                 console.log('request failed');
-            }
+            },
         });
     // return a;
     return response;
