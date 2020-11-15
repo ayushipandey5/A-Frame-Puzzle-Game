@@ -49,3 +49,32 @@ AFRAME.registerComponent('listener-3', {
         });
     }
 });
+
+AFRAME.registerComponent('trigger', {
+    init: function () {
+        var pp = document.querySelector('#rig');
+        pp.setAttribute('animation',"property: position; to: 11 3.5 -12.5; dur: 4000; easing: easeInOutCubic;");
+      setTimeout(() => {
+        var cam_car = document.querySelector('#cam_car');
+        cam_car.setAttribute('animation', "property: position; delay: 5000; to: -3.5 -0.15 -6.5; dur: 4500; easing: linear;")
+      }, 300);
+    }
+  });
+
+AFRAME.registerComponent('level1', {
+    init: function(){
+        this.el.addEventListener('mouseenter', function (evt) {
+            var pedestal = document.querySelector('#pedestal-1');
+            pedestal.emit('fallclick');
+            var rig = document.querySelector('#rig');
+            rig.emit('fallclick');
+            rig.emit('level2');
+            var pedestal2 = document.querySelector('#pedestal-2');
+            pedestal2.setAttribute('visible','true');
+            var road2 = document.querySelectorAll('.road-2');
+            for (var i=0; i < road2.length; i++) {
+                road2[i].setAttribute('visible','true');
+            }
+        });
+    }
+});
