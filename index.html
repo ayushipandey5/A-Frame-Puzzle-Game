@@ -145,7 +145,7 @@ raycaster = "far: 100; objects: .clickable" cursor="rayOrigin: mouse" camera-pos
 				navigate-on-click="url: ./home.html">
 				
 				<a-entity 
-				  text = "value: \nSCORE;
+				  text = "value: SCORE;
 						  
 						  color: #ffffff;
 						  shader: msdf;
@@ -158,7 +158,7 @@ raycaster = "far: 100; objects: .clickable" cursor="rayOrigin: mouse" camera-pos
 				  look-at = "#cam"
 				  position = "0 0 0"
 				  rotation = "0 0 0"
-				  scale = "5 5 5">
+				  scale = "5 5 5" id = "score-text">
 				</a-entity>
 				
 			</a-entity>
@@ -181,7 +181,9 @@ raycaster = "far: 100; objects: .clickable" cursor="rayOrigin: mouse" camera-pos
     </a-entity>
     
       <!-- CLEAR -->
-      <a-entity position="-3.5 7 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:Clear" material="shader:flat;color:white" on-click-clear></a-entity>
+      <a-entity position="-3.5 7 -16" id="clear-button" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:Clear" material="shader:flat;color:white" on-click-clear></a-entity>
+      <a-entity position="-3.5 9 -16" id="wrong-word" visible="false" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:Oopsie daise !! Wrong word" material="shader:flat;color:white" on-click-clear></a-entity>
+      <a-entity position="-3.5 9 -16" id="right-word" visible="false" text-geometry="" material="shader:flat;color:white" on-click-clear></a-entity>
 
 
       <!-- SUBMIT -->

@@ -2,8 +2,16 @@ startPos = [-3.5, 3, -16];
 increment = 1.5;
 letterscaleFactor = 1;
 textGeometryString = "font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:";
-apiUrl = "http://localhost:5000/level";
+apiUrl = "https://jumble-bumbleapi.herokuapp.com/level";
 levelTextAttrib = "bevelEnabled:true;bevelSize:0.04;bevelThickness:0.04;curveSegments:1;font:Fonts/exo2BlackItalic.typeface.json;height:0;size:1;style:italic;weight:bold;value:";
+scoreAwardedText = "font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:yey ... u've got [score]";
+scoreStaticText = "value: SCORE \n [score];\
+color: #ffffff;\
+shader: msdf;\
+opacity: 0.9;\
+align: center;\
+wrapCount: 40;\
+font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/montserrat/Montserrat-Regular.json";
 levelText = "LEVEL  ";
 currentLevel = 1;
 scaleFactor = 0.1;
@@ -18,6 +26,7 @@ var objArr = [];
 var wordArr = [];
 var submitWord = "";
 var gameScore = 0;
+var choosenWords = [];
 
 // function onClickLetter(letter,position)
 // {
@@ -90,7 +99,8 @@ AFRAME.registerComponent('on-click-clear',{
 
 AFRAME.registerComponent('on-click-submit',{
     update: function(){
-        this.el.addEventListener('click', function (evt) {
+        this.el.addEventListener('click', function (evt)
+        {
             submitWord = "";
             for(j=1 ; j<wordArr.length;j++){
                 var ele = document.getElementById(wordArr[j]).getAttribute("text-geometry");
@@ -103,14 +113,35 @@ AFRAME.registerComponent('on-click-submit',{
             score = 0;
             for(x in objArr){
                 var temp = objArr[x]["word"].toUpperCase();
-                if( temp === submitWord){
+                if (temp === submitWord.toUpperCase())
+                {
                     score = objArr[x]["score"];
                     flag = 1;
+                    break;
                 }
             }
-            if (flag == 1){
+            if (flag == 1)
+            {
+
                 gameScore += parseInt(score);
-                console.log(gameScore);
+                var el = document.querySelector("#score-text");
+                var rightel = document.querySelector("#right-word");
+                scoreTextModified = scoreStaticText.replace("[score]", gameScore);
+                rightText = scoreAwardedText.replace("[score]", gameScore);
+                rightel.setAttribute('text-geometry', rightText);
+                el.setAttribute("text", scoreTextModified);
+                el = document.querySelector("#clear-button");
+                el.click();
+            }
+            else
+            {
+                var time = 0;
+                var el = document.querySelector("#wrong-word");
+                el.setAttribute('visible', true);
+                setInterval(() => {
+                    el.setAttribute('visible', false);
+                }, 1000);
+                el.click();
             }
             // else{
             //     // console.log(submitWord);
