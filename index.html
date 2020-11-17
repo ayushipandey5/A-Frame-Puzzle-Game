@@ -13,8 +13,10 @@
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
     
+    
     <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+
     <script src="ParseJson.js"></script>
     <script src = "/script.js"></script>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
@@ -118,12 +120,12 @@ raycaster = "far: 100; objects: .clickable" cursor="rayOrigin: mouse" camera-pos
       
       <!--Displaying Letters-->
       <a-entity id="display-letters">
-        <!-- <a-entity position="-3.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:A" material="shader:flat;color:white"></a-entity>
+        <!-- <a-entity position="-3.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:A" material="shader:flat;color:white" on-click-letter></a-entity>
         <a-entity position="-2 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
         <a-entity position="-0.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:S" material="shader:flat;color:white"></a-entity>
         <a-entity position="1 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:E" material="shader:flat;color:white"></a-entity>
-        <a-entity position="2.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity> -->
-        <!-- <a-entity position="0 2 -16" scale="0.6 1.2 1" text-geometry="value:HEYA; font:Fonts/exo2Black.typeface.json;"></a-entity> -->
+        <a-entity position="2.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity> --> -->
+         <!-- <a-entity position="0 2 -16" scale="0.6 1.2 1" text-geometry="value:HEYA; font:Fonts/exo2Black.typeface.json;"></a-entity> -->
       </a-entity>
 
       <!-- HALO / SCORE -->
@@ -163,11 +165,28 @@ raycaster = "far: 100; objects: .clickable" cursor="rayOrigin: mouse" camera-pos
 
       <!-- LEVEL       -->
       <a-entity id="level-text" position="-10 1.2 -10" rotation = "10 65 0" text-geometry="" material="opacity:0.4;shader:flat;transparent:true;color:white" level1></a-entity>
-      <a-entity position="-3.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:A" material="shader:flat;color:white"></a-entity>
+      <!-- <a-entity position="-3.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:A" material="shader:flat;color:white"></a-entity>
         <a-entity position="-2 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
         <a-entity position="-0.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:S" material="shader:flat;color:white"></a-entity>
         <a-entity position="1 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:E" material="shader:flat;color:white"></a-entity>
-        <a-entity position="2.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
+        <a-entity position="2.5 2 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity> -->
+
+      <!-- Complete Word -->
+      <a-entity id="display-word">
+      <!-- <a-entity position="-1 0.3 -14" rotation = "0 0 0" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:S" material="shader:flat;color:white"></a-entity>
+      <a-entity position="-0.5 0.3 -14" rotation = "0 0 0" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
+      <a-entity position="0 0.3 -14" rotation = "0 0 0" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:A" material="shader:flat;color:white"></a-entity>
+      <a-entity position="0.5 0.3 -14"  rotation = "0 0 0" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:T" material="shader:flat;color:white"></a-entity>
+      <a-entity position="1 0.3 -14" rotation = "0 0 00" text-geometry="font:https://rawgit.com/ngokevin/kframe/master/components/text-geometry/lib/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:E" material="shader:flat;color:white"></a-entity> -->
+    </a-entity>
+    
+      <!-- CLEAR -->
+      <a-entity position="-3.5 7 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:Clear" material="shader:flat;color:white" on-click-clear></a-entity>
+
+
+      <!-- SUBMIT -->
+      <a-entity position="0.5 7 -16" text-geometry="font:Fonts/helvetiker_regular.typeface.json;height:0;size:0.5;style:italic;weight:bold;value:Submit" material="shader:flat;color:white" on-click-submit></a-entity>
+
 
     </a-scene>
   </body>
