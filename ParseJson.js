@@ -1,4 +1,7 @@
+carCoords = [-3.5,- 0.15,- 6.5];
 startPos = [-3.5, 3, -16];
+submitEnable = true;
+//letterSelectPos = [-3.5, 0.3, -14];
 increment = 1.5;
 letterscaleFactor = 1;
 textGeometryString = "font:Fonts/helvetiker_regular.typeface.json;height:0;size:1;style:italic;weight:bold;value:";
@@ -16,10 +19,12 @@ levelText = "LEVEL  ";
 currentLevel = 1;
 scaleFactor = 0.1;
 counter = 1;
-startWordPos = [-3.5 , 0.3 ,-14];
+startWordPos = [-3.5, 0.3, -14];
+levelthreshhold = 2;
 wordIncrement = 1.5;
 letterIndex = 1;
 wordCounter = 0;
+scoreThreshhold = 10;
 i = 0;
 var arr = [];
 var objArr = [];
@@ -46,7 +51,36 @@ var choosenWords = [];
 
 //     return base;
 // }
+function ResetCoOrdinateReference()
+{
+    startPos = [carCoords[0], carCoords[1] + 3.15, carCoords[2] - 9.5];
+    console.log("Start Pos" +startPos);
+    level = document.querySelector('#level-text');
+    levelCoords = [carCoords[0] - 6.5, carCoords[1] + 1.35, carCoords[2] - 3.5];
+    level.setAttribute('position', { x: levelCoords[0], y: levelCoords[1], z: levelCoords[2] });
+    
+    
+    fireRing = document.querySelector("#fire-ring");
+    fireRingCoords = [carCoords[0] + 13.5, carCoords[1] + 1.65, carCoords[2] - 4.5];
+    fireRing.setAttribute('position', { x: fireRingCoords[0], y: fireRingCoords[1], z: fireRingCoords[2] });
+    
+    
+    submitText = document.querySelector("#submit-text");
+    submitTextCoords = [carCoords[0] + 4, carCoords[1] + 7.15, carCoords[2] - 9.5];
+    submitText.setAttribute('position', { x: submitTextCoords[0], y: submitTextCoords[1], z: submitTextCoords[2] });
 
+
+    clearbutton = document.querySelector("#clear-button");
+    clearbutton.setAttribute('position', { x: carCoords[0], y: carCoords[1] + 7.15 , z: carCoords[2] - 9.5 });
+
+    wrongWord = document.querySelector("#wrong-word");
+    wrongWord.setAttribute('position', { x: carCoords[0], y: carCoords[1] + 9.15, z: carCoords[2] - 9.5});
+
+    wrongWord = document.querySelector("#right-word");
+    wrongWord.setAttribute('position', { x: carCoords[0], y: carCoords[1] + 9.15, z: carCoords[2] - 9.5 });
+    
+
+}
 function ShowLetter(letter,position)
 {
     
@@ -72,11 +106,73 @@ function ShowLetter(letter,position)
     return base;
 }
 
+function AnimateNextLevel()
+{
+    var pedestal = document.querySelector('#pedestal-1');
+    pedestal.emit('fallclick');
+    var rig = document.querySelector('#rig');
+    rig.emit('fallclick');
+    rig.emit('level2');
+    var pedestal2 = document.querySelector('#pedestal-2');
+    pedestal2.setAttribute('visible', 'true');
+    var road2 = document.querySelectorAll('.road-2');
+    for (var i = 0; i < road2.length; i++)
+    {
+        road2[i].setAttribute('visible', 'true');
+    }
+    setTimeout(() => {
+        RenderLevel2();
+    }, 7000);
+   
+}
+
+function RenderLevel2()
+{
+    startPos = [-4, 13, -57];
+    carCoords = [-3.5, 11.4, -53.5];
+    ResetCoOrdinateReference();
+    currentLevel = currentLevel + 1;
+    document.querySelector("#display-letters").innerHTML = '';
+    var objects = GetJsonFromApi(currentLevel);
+    objArr = objects["Words"];
+    UpdateLevelText(currentLevel);
+    //console.log(jsonString);
+    //var objects = jQuery.parseJSON(jsonString);
+    var numberOfLetters = objects["JumbleLetters"].length;
+    if (numberOfLetters % 2 == 0) {
+        startPos[0] = - ((numberOfLetters * increment) / 2);
+        startWordPos[0] = - ((numberOfLetters * increment) / 2);
+        console.log(startPos);
+        console.log(startWordPos);
+    }
+    else {
+        startPos[0] = - increment * (numberOfLetters / 2);
+        startWordPos[0] = - increment * (numberOfLetters / 2);
+        console.log(startPos);
+        console.log(startWordPos);
+    }
+    for(var i = 0; i < objects["JumbleLetters"].length; i++)
+    {
+        console.log(objects["JumbleLetters"][i]);
+        CreateLetter(objects["JumbleLetters"][i].toUpperCase(), i + 1);
+    }
+}
+
+function IncrementLevel()
+{
+    var el = document.querySelector("#level-word");
+    el.setAttribute('visible', true);
+    setTimeout(() => {
+        el.setAttribute('visible', false);
+        AnimateNextLevel();
+    }, 5000);
+}
+
 AFRAME.registerComponent('on-click-letter', {
     update: function(){
         this.el.addEventListener('click', function (evt) {
             // this.setAttribute('visible',false);
-            this.setAttribute('position',{x:-3.5 - i, y:0.3, z:-14});
+            this.setAttribute('position',{x:carCoords[0] - i, y:carCoords[1] + 0.45, z:carCoords[2] - 7.5});
             wordArr[letterIndex] = this.getAttribute("id");
             letterIndex += 1;
             i -= increment;
@@ -101,55 +197,69 @@ AFRAME.registerComponent('on-click-submit',{
     update: function(){
         this.el.addEventListener('click', function (evt)
         {
-            submitWord = "";
-            for(j=1 ; j<wordArr.length;j++){
-                var ele = document.getElementById(wordArr[j]).getAttribute("text-geometry");
-                var val = ele.value;
-                submitWord = submitWord.concat(val);
-            }
-            wordArr = [];
-            letterIndex = 1;
-            flag = 0;
-            score = 0;
-            for(x in objArr){
-                var temp = objArr[x]["word"].toUpperCase();
-                if (temp === submitWord.toUpperCase())
-                {
-                    score = objArr[x]["score"];
-                    flag = 1;
-                    break;
+            if (submitEnable) {
+                submitEnable = false;
+                submitWord = "";
+                for (j = 1; j < wordArr.length; j++) {
+                    var ele = document.getElementById(wordArr[j]).getAttribute("text-geometry");
+                    var val = ele.value;
+                    submitWord = submitWord.concat(val);
                 }
-            }
-            if (flag == 1)
-            {
+                wordArr = [];
+                letterIndex = 1;
+                flag = 0;
+                score = 0;
+                for (x in objArr) {
+                    var temp = objArr[x]["word"].toUpperCase();
+                    if (temp === submitWord.toUpperCase()) {
+                        score = objArr[x]["score"];
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag == 1) {
 
-                gameScore += parseInt(score);
-                var el = document.querySelector("#score-text");
-                var rightel = document.querySelector("#right-word");
-                scoreTextModified = scoreStaticText.replace("[score]", gameScore);
-                rightText = scoreAwardedText.replace("[score]", gameScore);
-                rightel.setAttribute('text-geometry', rightText);
-                el.setAttribute("text", scoreTextModified);
-                el = document.querySelector("#clear-button");
-                el.click();
+                    gameScore += parseInt(score);
+                    var el = document.querySelector("#score-text");
+                    var rightel = document.querySelector("#right-word");
+                    scoreTextModified = scoreStaticText.replace("[score]", gameScore);
+                    rightText = scoreAwardedText.replace("[score]", score);
+                    if (gameScore > scoreThreshhold && currentLevel < 2) {
+                        el = document.querySelector("#clear-button");
+                        el.click();
+                        IncrementLevel();
+                    }
+                    else {
+                        rightel.setAttribute('text-geometry', rightText);
+                        rightel.setAttribute('visible', true);
+                        setTimeout(() => {
+                            rightel.setAttribute('visible', false);
+                            submitEnable = true;
+                        }, 5000);
+                        el.setAttribute("text", scoreTextModified);
+                        el = document.querySelector("#clear-button");
+                        el.click();
+                    }
+                }
+                else {
+                    var time = 0;
+                    var el = document.querySelector("#wrong-word");
+                    el.setAttribute('visible', true);
+                    setTimeout(() => {
+                        el.setAttribute('visible', false);
+                        submitEnable = true;
+                    }, 5000);
+                    el.click();
+                }
+                // else{
+                //     // console.log(submitWord);
+                //     // console.log("invalid");
+                // }
             }
-            else
-            {
-                var time = 0;
-                var el = document.querySelector("#wrong-word");
-                el.setAttribute('visible', true);
-                setInterval(() => {
-                    el.setAttribute('visible', false);
-                }, 1000);
-                el.click();
-            }
-            // else{
-            //     // console.log(submitWord);
-            //     // console.log("invalid");
-            // }
-        });
-    }
+            });
+        }
 });
+
 
 
 // AFRAME.registerComponent('on-click-letter', {
@@ -212,7 +322,11 @@ AFRAME.registerComponent('on-click-submit',{
 // }
 // });
 
-
+function ClearLetters()
+{
+    var el = document.querySelector("#display-letters");
+    el.innerHTML = '';
+}
 
 function CreateLetter(letter, position)
 {
@@ -263,6 +377,7 @@ $(document).ready(function ()
     //CreateLetter("c", 3);
     //ShowLetter("a", 1);
     //ShowLetter("b", 2);
+    ResetCoOrdinateReference();
     var objects = GetJsonFromApi(currentLevel);
     objArr = objects["Words"];
     UpdateLevelText(currentLevel);
@@ -286,6 +401,7 @@ $(document).ready(function ()
         console.log(objects["JumbleLetters"][i]);
         CreateLetter(objects["JumbleLetters"][i].toUpperCase(), i + 1);
     }
+    //ClearLetters()
 });
 
 
