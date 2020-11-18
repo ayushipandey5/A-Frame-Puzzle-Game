@@ -61,20 +61,20 @@ AFRAME.registerComponent('trigger', {
     }
   });
 
-AFRAME.registerComponent('level1', {
-    init: function(){
-        this.el.addEventListener('mouseenter', function (evt) {
-            var pedestal = document.querySelector('#pedestal-1');
-            pedestal.emit('fallclick');
-            var rig = document.querySelector('#rig');
-            rig.emit('fallclick');
-            rig.emit('level2');
-            var pedestal2 = document.querySelector('#pedestal-2');
-            pedestal2.setAttribute('visible','true');
-            var road2 = document.querySelectorAll('.road-2');
-            for (var i=0; i < road2.length; i++) {
-                road2[i].setAttribute('visible','true');
-            }
-        });
-    }
-});
+// AFRAME.registerComponent('level1', {
+//     init: function(){
+//         this.el.addEventListener('mouseenter', function (evt) {
+//             var pedestal = document.querySelector('#pedestal-1');
+//             pedestal.emit('fallclick');
+//             var rig = document.querySelector('#rig');
+//             rig.emit('fallclick');
+//             rig.emit('level2');
+//             var pedestal2 = document.querySelector('#pedestal-2');
+//             pedestal2.setAttribute('visible','true');
+//             var road2 = document.querySelectorAll('.road-2');
+//             for (var i=0; i < road2.length; i++) {
+//                 road2[i].setAttribute('visible','true');
+//             }
+//         });
+//     }
+// });
