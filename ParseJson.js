@@ -132,6 +132,7 @@ function RenderLevel2()
     carCoords = [-3.5, 11.4, -53.5];
     ResetCoOrdinateReference();
     currentLevel = currentLevel + 1;
+    counter = 1;
     document.querySelector("#display-letters").innerHTML = '';
     var objects = GetJsonFromApi(currentLevel);
     objArr = objects["Words"];
@@ -156,6 +157,8 @@ function RenderLevel2()
         console.log(objects["JumbleLetters"][i]);
         CreateLetter(objects["JumbleLetters"][i].toUpperCase(), i + 1);
     }
+    submitEnable = true;
+    gameScore = 0;
 }
 
 function IncrementLevel()
@@ -187,12 +190,17 @@ AFRAME.registerComponent('on-click-clear',{
             i = 0;
             for(j=1;j < arr.length;j++){
                 var ele = document.getElementById(j);
-                ele.setAttribute('position',{x:arr[j], y:3, z:-16});
+                ele.setAttribute('position',{x:arr[j], y:carCoords[1] + 3.15, z: carCoords[2] - 9.5});
             }
         });
     }
 });
-
+function UpdateScore(score)
+{
+    var el = document.querySelector("#score-text");
+    scoreTextModified = scoreStaticText.replace("[score]", score);
+    el.setAttribute("text", scoreTextModified);
+}
 AFRAME.registerComponent('on-click-submit',{
     update: function(){
         this.el.addEventListener('click', function (evt)
@@ -220,9 +228,8 @@ AFRAME.registerComponent('on-click-submit',{
                 if (flag == 1) {
 
                     gameScore += parseInt(score);
-                    var el = document.querySelector("#score-text");
                     var rightel = document.querySelector("#right-word");
-                    scoreTextModified = scoreStaticText.replace("[score]", gameScore);
+                    UpdateScore(gameScore);
                     rightText = scoreAwardedText.replace("[score]", score);
                     if (gameScore > scoreThreshhold && currentLevel < 2) {
                         el = document.querySelector("#clear-button");
@@ -236,7 +243,7 @@ AFRAME.registerComponent('on-click-submit',{
                             rightel.setAttribute('visible', false);
                             submitEnable = true;
                         }, 5000);
-                        el.setAttribute("text", scoreTextModified);
+                       
                         el = document.querySelector("#clear-button");
                         el.click();
                     }
