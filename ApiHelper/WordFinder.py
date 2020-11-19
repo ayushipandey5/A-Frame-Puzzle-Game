@@ -88,7 +88,7 @@ def AnagramFinder(word):
 
 
 # start_time = time.time()
-# words = AnagramFinder("beautiful")
+# words = AnagramFinder("aeroplane")
 # for thisWord in words:
 #     print(thisWord.word)
 # print("--- %s seconds ---" % (time.time() - start_time))

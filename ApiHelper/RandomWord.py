@@ -4,14 +4,7 @@ import random
 import ApiHelper.Constants as const
 from bs4 import BeautifulSoup as soup
 import urllib3 as urlHelper
-
-
-request_headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-class words:
-    def __init__(self, word, length, score):
-        self.length = length
-        self.word = word
-        self.score = score
+import ApiHelper.WordFinder as wordFinder
 
 class json_format:
     def __init__(self,current_level,points_nextlevel,jumble_letters,total_answer,words):
@@ -30,33 +23,6 @@ class json_format:
         "Words":self.words
         }
         return message
-
-
-
-def AnagramFinder(word):
-    my_url = const.apiUrl.replace("[Word]", word)
-    https = urlHelper.PoolManager()
-    url_client=https.request('Get', my_url, headers = request_headers)
-    page_html=url_client.data
-    url_client.close()
-    page_soup = soup(page_html, "html.parser")
-    orderedList = page_soup.findAll("div", {"class": "wordblock"})
-    anagramWords = []
-    for lists in orderedList:
-        try:
-            currWord = lists.find("a").get_text()
-        except: 
-            currWord = ""
-        try:
-            score = lists.find("sub").get_text()
-        except: 
-            score = ""
-        try:
-            length = lists.find("a")['data-length']
-        except: 
-            length = len(currWord)
-        anagramWords.append(words(currWord, length, score))
-    return anagramWords
   
             
 app=Flask(__name__)
@@ -68,7 +34,7 @@ def func():
     index_list = df["Level1"].tolist()
     random_num = random.choice(index_list)
     #return("<p>" + "</p><p>".join(random_num) + "</p>")
-    finalword= AnagramFinder(random_num)
+    finalword= wordFinder.AnagramFinder(random_num)
     level=1
     points_nextlevel=50
     jumble_letters=list(random_num)
@@ -100,7 +66,7 @@ def func2():
     index_list = df["Level2"].tolist()
     random_num = random.choice(index_list)
     #return("<p>" + "</p><p>".join(random_num) + "</p>")
-    finalword= AnagramFinder(random_num)
+    finalword= wordFinder.AnagramFinder(random_num)
     level=2
     points_nextlevel=70
     jumble_letters=list(random_num)
@@ -132,7 +98,7 @@ def func3():
     index_list = df["Level3"].tolist()
     random_num = random.choice(index_list)
     #return("<p>" + "</p><p>".join(random_num) + "</p>")
-    finalword= AnagramFinder(random_num)
+    finalword= wordFinder.AnagramFinder(random_num)
     level=3
     points_nextlevel=100
     jumble_letters=list(random_num)
