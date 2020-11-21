@@ -22,30 +22,28 @@ AFRAME.registerComponent('listener-1', {
         }
 });
 
-AFRAME.registerComponent('listener-2', {
-    update: function(){
-        //add behaviour for mouse enter (or gaze enter)
-        this.el.addEventListener('mouseenter', function (evt) {
-            var text2 = document.querySelector('#text2');  
-            text2.setAttribute('troika-text',"value:OPTIONS; color:#540D6E;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");                
-        });
-        this.el.addEventListener('mouseleave', function (evt) {
-            var text2 = document.querySelector('#text2');  
-            text2.setAttribute('troika-text',"value:OPTIONS; color:#000000;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");                
-        });
-    }
-});
-
 AFRAME.registerComponent('listener-3', {
     update: function(){
         //add behaviour for mouse enter (or gaze enter)
         this.el.addEventListener('mouseenter', function (evt) {
             var text3 = document.querySelector('#text3');  
-            text3.setAttribute('troika-text',"value:HELP; color:#540D6E;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");                
+            text3.setAttribute('troika-text',"value:HOW TO PLAY; color:#540D6E;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");
+            var instructions = document.querySelector('#instructions');
+            var howtoplaythisgame = document.querySelector("#howtoplaythisgame");
+            howtoplaythisgame.setAttribute("visible","true");
+            instructions.setAttribute("visible","true");
+            var text1 = document.querySelector('#text1');
+            text1.setAttribute("visible","false");
         });
         this.el.addEventListener('mouseleave', function (evt) {
             var text3 = document.querySelector('#text3');  
-            text3.setAttribute('troika-text',"value:HELP; color:#000000;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");                
+            text3.setAttribute('troika-text',"value:HOW TO PLAY; color:#000000;fontSize : 1.3;font: /Fonts/outrun_future/Outrun_future.otf");
+            var instructions = document.querySelector('#instructions');
+            var howtoplaythisgame = document.querySelector("#howtoplaythisgame");
+            howtoplaythisgame.setAttribute("visible","false");  
+            instructions.setAttribute("visible","false");    
+            var text1 = document.querySelector('#text1');
+            text1.setAttribute("visible","true");
         });
     }
 });
