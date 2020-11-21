@@ -20,7 +20,7 @@
 
 # To run the game -
 
-- Run the `start.html` to run the game.
+- Run `start.html` to run the game.
 
 # Functionality - 
 
