@@ -163,7 +163,7 @@ function RenderLevel2()
         CreateLetter(objects["JumbleLetters"][i].toUpperCase(), i + 1);
     }
     submitEnable = true;
-    gameScore = 0;
+    // gameScore = 0;
 }
 
 function IncrementLevel()
@@ -432,7 +432,3 @@ $(document).ready(function ()
     }
     //ClearLetters()
 });
-
-
-
-
