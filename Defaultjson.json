@@ -1,0 +1,404 @@
+{
+    "CurrentLevel": 1, 
+    "JumbleLetters": [
+      "u", 
+      "e", 
+      "r", 
+      "s", 
+      "i", 
+      "o", 
+      "s"
+    ], 
+    "PointstoNextLevel": 50, 
+    "TotalAnswers": 97, 
+    "Words": [
+      {
+        "score": "8", 
+        "word": "serious"
+      }, 
+      {
+        "score": "7", 
+        "word": "issuer"
+      }, 
+      {
+        "score": "7", 
+        "word": "rouses"
+      }, 
+      {
+        "score": "7", 
+        "word": "rousie"
+      }, 
+      {
+        "score": "7", 
+        "word": "serous"
+      }, 
+      {
+        "score": "7", 
+        "word": "sieurs"
+      }, 
+      {
+        "score": "6", 
+        "word": "osiers"
+      }, 
+      {
+        "score": "6", 
+        "word": "seisor"
+      }, 
+      {
+        "score": "6", 
+        "word": "euros"
+      }, 
+      {
+        "score": "6", 
+        "word": "issue"
+      }, 
+      {
+        "score": "6", 
+        "word": "ourie"
+      }, 
+      {
+        "score": "6", 
+        "word": "risus"
+      }, 
+      {
+        "score": "6", 
+        "word": "roues"
+      }, 
+      {
+        "score": "6", 
+        "word": "rouse"
+      }, 
+      {
+        "score": "6", 
+        "word": "ruses"
+      }, 
+      {
+        "score": "6", 
+        "word": "russe"
+      }, 
+      {
+        "score": "6", 
+        "word": "sieur"
+      }, 
+      {
+        "score": "6", 
+        "word": "sorus"
+      }, 
+      {
+        "score": "6", 
+        "word": "sours"
+      }, 
+      {
+        "score": "6", 
+        "word": "souse"
+      }, 
+      {
+        "score": "6", 
+        "word": "suers"
+      }, 
+      {
+        "score": "6", 
+        "word": "users"
+      }, 
+      {
+        "score": "5", 
+        "word": "osier"
+      }, 
+      {
+        "score": "5", 
+        "word": "rises"
+      }, 
+      {
+        "score": "5", 
+        "word": "roses"
+      }, 
+      {
+        "score": "5", 
+        "word": "sires"
+      }, 
+      {
+        "score": "5", 
+        "word": "sores"
+      }, 
+      {
+        "score": "5", 
+        "word": "euro"
+      }, 
+      {
+        "score": "5", 
+        "word": "ours"
+      }, 
+      {
+        "score": "5", 
+        "word": "reus"
+      }, 
+      {
+        "score": "5", 
+        "word": "roue"
+      }, 
+      {
+        "score": "5", 
+        "word": "rues"
+      }, 
+      {
+        "score": "5", 
+        "word": "ruse"
+      }, 
+      {
+        "score": "5", 
+        "word": "sour"
+      }, 
+      {
+        "score": "5", 
+        "word": "sous"
+      }, 
+      {
+        "score": "5", 
+        "word": "suer"
+      }, 
+      {
+        "score": "5", 
+        "word": "sues"
+      }, 
+      {
+        "score": "5", 
+        "word": "sure"
+      }, 
+      {
+        "score": "5", 
+        "word": "user"
+      }, 
+      {
+        "score": "5", 
+        "word": "uses"
+      }, 
+      {
+        "score": "4", 
+        "word": "eros"
+      }, 
+      {
+        "score": "4", 
+        "word": "ires"
+      }, 
+      {
+        "score": "4", 
+        "word": "ores"
+      }, 
+      {
+        "score": "4", 
+        "word": "oses"
+      }, 
+      {
+        "score": "4", 
+        "word": "reis"
+      }, 
+      {
+        "score": "4", 
+        "word": "rise"
+      }, 
+      {
+        "score": "4", 
+        "word": "roes"
+      }, 
+      {
+        "score": "4", 
+        "word": "rose"
+      }, 
+      {
+        "score": "4", 
+        "word": "seis"
+      }, 
+      {
+        "score": "4", 
+        "word": "sers"
+      }, 
+      {
+        "score": "4", 
+        "word": "sire"
+      }, 
+      {
+        "score": "4", 
+        "word": "sirs"
+      }, 
+      {
+        "score": "4", 
+        "word": "soie"
+      }, 
+      {
+        "score": "4", 
+        "word": "sore"
+      }, 
+      {
+        "score": "4", 
+        "word": "sori"
+      }, 
+      {
+        "score": "4", 
+        "word": "sris"
+      }, 
+      {
+        "score": "4", 
+        "word": "our"
+      }, 
+      {
+        "score": "4", 
+        "word": "ous"
+      }, 
+      {
+        "score": "4", 
+        "word": "rue"
+      }, 
+      {
+        "score": "4", 
+        "word": "rus"
+      }, 
+      {
+        "score": "4", 
+        "word": "sou"
+      }, 
+      {
+        "score": "4", 
+        "word": "sue"
+      }, 
+      {
+        "score": "4", 
+        "word": "sui"
+      }, 
+      {
+        "score": "4", 
+        "word": "sus"
+      }, 
+      {
+        "score": "4", 
+        "word": "use"
+      }, 
+      {
+        "score": "3", 
+        "word": "ers"
+      }, 
+      {
+        "score": "3", 
+        "word": "ess"
+      }, 
+      {
+        "score": "3", 
+        "word": "ire"
+      }, 
+      {
+        "score": "3", 
+        "word": "oer"
+      }, 
+      {
+        "score": "3", 
+        "word": "oes"
+      }, 
+      {
+        "score": "3", 
+        "word": "ore"
+      }, 
+      {
+        "score": "3", 
+        "word": "ors"
+      }, 
+      {
+        "score": "3", 
+        "word": "ose"
+      }, 
+      {
+        "score": "3", 
+        "word": "reo"
+      }, 
+      {
+        "score": "3", 
+        "word": "res"
+      }, 
+      {
+        "score": "3", 
+        "word": "roe"
+      }, 
+      {
+        "score": "3", 
+        "word": "sei"
+      }, 
+      {
+        "score": "3", 
+        "word": "ser"
+      }, 
+      {
+        "score": "3", 
+        "word": "ses"
+      }, 
+      {
+        "score": "3", 
+        "word": "sir"
+      }, 
+      {
+        "score": "3", 
+        "word": "sis"
+      }, 
+      {
+        "score": "3", 
+        "word": "sos"
+      }, 
+      {
+        "score": "3", 
+        "word": "sri"
+      }, 
+      {
+        "score": "3", 
+        "word": "ou"
+      }, 
+      {
+        "score": "3", 
+        "word": "us"
+      }, 
+      {
+        "score": "2", 
+        "word": "eo"
+      }, 
+      {
+        "score": "2", 
+        "word": "er"
+      }, 
+      {
+        "score": "2", 
+        "word": "es"
+      }, 
+      {
+        "score": "2", 
+        "word": "io"
+      }, 
+      {
+        "score": "2", 
+        "word": "is"
+      }, 
+      {
+        "score": "2", 
+        "word": "oe"
+      }, 
+      {
+        "score": "2", 
+        "word": "oi"
+      }, 
+      {
+        "score": "2", 
+        "word": "or"
+      }, 
+      {
+        "score": "2", 
+        "word": "os"
+      }, 
+      {
+        "score": "2", 
+        "word": "re"
+      }, 
+      {
+        "score": "2", 
+        "word": "si"
+      }, 
+      {
+        "score": "2", 
+        "word": "so"
+      }
+    ]
+  }
