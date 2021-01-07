@@ -1,6 +1,5 @@
 #  **SSD PROJECT - JUMBLE BUMBLE :**
-### naah I dont wanna do all the below stuff ..... can I just enjoy the game?
-#### u sure can!! .... just move over to this https://jumblebumble.herokuapp.com/
+
 
 # Hightlights -
 - Jumble Bumble is word puzzle game for people with dyslexia.
@@ -36,6 +35,9 @@
 - Immersive experience.
 - Multilevel game.
 - Gaze based and click based.
+
+### naah I dont wanna do all the below stuff ..... can I just enjoy the game?
+#### u sure can!! .... just move over to this https://jumblebumble.herokuapp.com/
 
 
 
