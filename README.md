@@ -36,7 +36,7 @@
 - Multilevel game.
 - Gaze based and click based.
 
-### naah I dont wanna do all the below stuff ..... can I just enjoy the game?
+### naah I dont wanna do all the above stuff ..... can I just enjoy the game?
 #### u sure can!! .... just move over to this https://jumblebumble.herokuapp.com/
 
 
